@@ -22,21 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /**Checks and asks permission at the start of the activity */
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                Log.i("Permission", "Granted already");
-                //If permission is granted the code goes in here
-
-                //code ends here
-            } else {
-                requestStoragePermission();
-            }
-        }
+        permission();
     }
-
-
 
     private void requestStoragePermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
@@ -76,9 +63,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    /**asks permission on button click*/
     public void ClickMe(View view) {
+        /**asks permission on button click*/
+        permission();
+    }
+
+    private void permission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getApplicationContext(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
